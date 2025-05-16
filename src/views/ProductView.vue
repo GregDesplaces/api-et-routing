@@ -18,9 +18,9 @@
 				<p class="mb-4">{{ product.description }}</p>
 				<div class="mb-4">
 					<label for="quantity" class="form-label">Quantité:</label>
-					<input type="number" class="form-control" id="quantity" value="1" min="1" style="width: 80px;">
+					<input type="number" class="form-control" id="quantity" v-model="quantity" min="1" style="width: 80px;">
 				</div>
-				<button class="btn btn-primary btn-lg mb-3 me-2">
+				<button class="btn btn-primary btn-lg mb-3 me-2" @click="setCart(product, quantity)">
 					<i class="bi bi-cart-plus"></i> Ajouter au panier
 				</button>
 				<button class="btn btn-outline-secondary btn-lg mb-3" @click="goBack">
@@ -36,11 +36,14 @@
 import { ref, onBeforeMount } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { getProductById } from '@/services/fetch.service'
+import { setCart } from '@/services/cart.service'
 
 const router = useRouter()
 const route = useRoute()
 
 const product= ref({})
+
+const quantity = ref(1)
 
 const goBack = () => router.back()
 
