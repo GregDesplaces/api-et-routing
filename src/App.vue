@@ -1,7 +1,12 @@
 <script setup>
-
+import TheHeader from '@/components/TheHeader.vue';
 </script>
 
 <template>
-  <RouterView />
+  <TheHeader />
+  <main>
+    <RouterView />
+  </main>
 </template>
+
+

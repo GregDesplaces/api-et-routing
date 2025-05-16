@@ -1,6 +1,6 @@
 <template>
 	<div class="container py-2 text-center">
-		<h1>Liste des produits</h1>
+		<h1>Liste des produits par catégories</h1>
 
 		<hr>
 
@@ -18,13 +18,16 @@
 <script setup>
 import { ref, onBeforeMount } from 'vue';
 import ProductCard from '@/components/ProductCard.vue';
-import { getAllProducts } from '@/services/fetch.service'
+import { getProducts } from '@/services/fetch.service';
+import { useRoute } from 'vue-router';
+
+const route = useRoute()
 
 
 const products = ref([])
 
 onBeforeMount( async () => {
-	products.value = await getAllProducts()
+	products.value = await getProducts(route.params.category)
 })
 	
 
