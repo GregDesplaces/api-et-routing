@@ -20,7 +20,7 @@
 					<label for="quantity" class="form-label">Quantité:</label>
 					<input type="number" class="form-control" id="quantity" v-model="quantity" min="1" style="width: 80px;">
 				</div>
-				<button class="btn btn-primary btn-lg mb-3 me-2" @click="setCart(product, quantity)">
+				<button class="btn btn-primary btn-lg mb-3 me-2" @click="addToCart(product, quantity)">
 					<i class="bi bi-cart-plus"></i> Ajouter au panier
 				</button>
 				<button class="btn btn-outline-secondary btn-lg mb-3" @click="goBack">
@@ -46,6 +46,11 @@ const product= ref({})
 const quantity = ref(1)
 
 const goBack = () => router.back()
+
+const addToCart = () => {
+	setCart(product.value, quantity.value)
+	router.push('/cart')
+}
 
 onBeforeMount( async () => {
 	product.value = await getProductById(route.params.id)

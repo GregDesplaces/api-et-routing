@@ -8,11 +8,11 @@ export const getProducts = async (slug = null) => {
 		const response = await fetch(url)
 		const data = await response.json()
 		if (!response.ok) {
-			throw new error('Erreur dans la récupération des produits')
+			throw new Error('Erreur dans la récupération des produits')
 		}
 		return data.products
 	} catch (e) {
-		throw new error('Erreur dans la récupération des produits')
+		throw new Error('Erreur dans la récupération des produits', e)
 	}
 }
 
@@ -22,11 +22,11 @@ export const getProductById = async (id) => {
 		const response = await fetch(`${API_URL}/${id}`)
 		const product = await response.json()
 		if (!response.ok) {
-			throw new error('Erreur dans la récupération du produit')
+			throw new Error('Erreur dans la récupération du produit')
 		}
 		return product
 	} catch (e) {
-		throw new error('Erreur dans la récupération du produit')
+		throw new Error('Erreur dans la récupération du produit', e)
 	}
 }
 
@@ -35,10 +35,10 @@ export const getAllCategories = async () => {
 		const response = await fetch(`${API_URL}/categories`)
 		const categories = await response.json()
 		if (!response.ok) {
-			throw new error('Erreur dans la récupération des catégories')
+			throw new Error('Erreur dans la récupération des catégories')
 		}
 		return categories
 	} catch (e) {
-		throw new error('Erreur dans la récupération des catégories')
+		throw new Error('Erreur dans la récupération des catégories')
 	}
 }

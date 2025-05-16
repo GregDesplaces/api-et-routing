@@ -4,7 +4,7 @@
 
 		<hr>
 
-		<div class="row row-cols-4 row-cols-md-6 row-cols-lg-12 g-4">
+		<div class="row row-cols-1 row-cols-sm-3 row-cols-md-6 row-cols-lg-12 g-4">
 
 			<div class="col" v-for="cat in categories" :key="cat.slug">
 				<!-- Carte des produits -->
